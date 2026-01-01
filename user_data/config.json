@@ -1,0 +1,84 @@
+{
+    "max_open_trades": 10,
+    "stake_currency": "USDT",
+    "stake_amount": "unlimited",
+    "tradable_balance_ratio": 0.99,
+    "fiat_display_currency": "USD",
+    "timeframe": "5m",
+    "dry_run": true,
+    "dry_run_wallet": 1000,
+    "cancel_open_orders_on_exit": false,
+    "unfilledtimeout": {
+        "entry": 10,
+        "exit": 30,
+        "unit": "minutes"
+    },
+    "exchange": {
+        "name": "binance",
+        "key": "${EXCHANGE_KEY}",
+        "secret": "${EXCHANGE_SECRET}",
+        "ccxt_config": {"enableRateLimit": true},
+        "ccxt_async_config": {
+            "enableRateLimit": true,
+            "rateLimit": 200
+        },
+        "pair_whitelist": [],
+        "pair_blacklist": [
+            "(BTC|ETH|BNB|USDT|USDC|EUR|GBP|AUD|CAD|JPY|BUSD)/.*",
+            ".*(_PREMIUM|BEAR|BULL|DOWN|UP|[1235][SL]).*",
+            "(ACM|AIG|ALPINE|ASR|ATM|BAR|CITY|FOR|GAL|JUV|LAZIO|OG|PSG|SANTOS|TRA)/.*",
+            "(AUD|BRZ|CAD|CHF|EUR|GBP|HKD|IDRT|JPY|NGN|PAX|PAXG|PLN|RON|RUB|SGD|TRY|UAH|USD|USDC|USDT|VAI|ZAR)/.*",
+            "(BUSD|CUSDT|DAI|GUSD|SUSD|TUSD|USDC|USDT|USDK|UST|VAI|ZUSD)/.*",
+            "(BCHABC|BCHSV|BTG|BTT|HOT|MFT|NPXS|SC|STORM|TFUEL|WIN)/.*"
+        ]
+    },
+    "pairlists": [
+        {
+            "method": "VolumePairList",
+            "number_assets": 80,
+            "sort_key": "quoteVolume",
+            "min_value_30m": 0,
+            "refresh_period": 1800,
+            "lookback_days": 1
+        },
+        {"method": "AgeFilter", "min_days_listed": 10},
+        {"method": "SpreadFilter", "max_spread": 0.005},
+        {"method": "PriceFilter", "low_price_ratio": 0.001},
+        {
+            "method": "RangeStabilityFilter",
+            "lookback_days": 10,
+            "min_rate_of_change": 0.01,
+            "refresh_period": 1440
+        }
+    ],
+    "edge": {
+        "enabled": false
+    },
+    "api_server": {
+        "enabled": true,
+        "listen_ip_address": "0.0.0.0",
+        "listen_port": 8080,
+        "verbosity": "info",
+        "enable_openapi": false,
+        "jwt_secret_key": "${JWT_SECRET}",
+        "username": "admin",
+        "password": "${WEBUI_PASSWORD}"
+    },
+    "bot_name": "NFI_Bot",
+    "initial_state": "running",
+    "force_entry_enable": false,
+    "internals": {
+        "process_throttle_secs": 5
+    },
+    "strategy": "NostalgiaForInfinityX7",
+    "strategy_path": "user_data/strategies/",
+    "minimal_roi": {
+        "0": 100
+    },
+    "stoploss": -0.99,
+    "trailing_stop": false,
+    "use_exit_signal": true,
+    "exit_profit_only": false,
+    "exit_profit_offset": 0.0,
+    "ignore_roi_if_entry_signal": false
+}
