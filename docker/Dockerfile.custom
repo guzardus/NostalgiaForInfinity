@@ -24,6 +24,7 @@ USER root
 
 COPY --from=builder /home/ftuser/.local /home/ftuser/.local
 COPY --chown=1000:1000 tests/requirements.txt /freqtrade/
+COPY --chown=1000:1000 user_data /freqtrade/user_data
 
 USER ftuser
 
