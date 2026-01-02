@@ -22,7 +22,8 @@
 8. [Running with Docker](#running-with-docker)
 9. [Validating Configuration and Strategy](#validating-configuration-and-strategy)
 10. [Troubleshooting Common Issues](#troubleshooting-common-issues)
-11. [Security Best Practices](#security-best-practices)
+11. [Deploying to Railway](#deploying-to-railway)
+12. [Security Best Practices](#security-best-practices)
 
 ## Prerequisites
 
@@ -294,6 +295,36 @@ Use a JSON validator to check `config.json` and `config-private.json` for syntax
 - [configs/exampleconfig_secret.json](file://configs/exampleconfig_secret.json#L1-L86)
 - [NostalgiaForInfinityX6.py](file://NostalgiaForInfinityX6.py#L1)
 - [NostalgiaForInfinityX6.py](file://NostalgiaForInfinityX6.py#L68-L822)
+
+## Deploying to Railway
+
+Railway provides a simple platform for deploying containerized applications. To deploy NostalgiaForInfinity to Railway:
+
+### Configuration Requirements
+
+1. **Dockerfile Path**: Set the Dockerfile path to `docker/Dockerfile.custom` in your Railway service settings.
+
+2. **Port Configuration**: The Freqtrade API server listens on port 8080 by default. Configure Railway to expose port 8080 as the target port.
+
+3. **Dry-Run Capital**: The demo/dry-run starting capital is controlled by the `dry_run_wallet` setting in `user_data/config.json`. The default value is set to 5000 (USDT).
+
+4. **Environment Variables**: Set the following environment variables in Railway:
+   - `EXCHANGE_KEY`: Your exchange API key
+   - `EXCHANGE_SECRET`: Your exchange API secret
+   - `JWT_SECRET`: A secure random string for API authentication
+   - `WEBUI_PASSWORD`: Password for the web interface
+
+### Important Validation Notes
+
+When using `VolumePairList` with `lookback_days`, ensure the `refresh_period` is at least as long as the timeframe specified:
+- For `lookback_days=1` (1 day), `refresh_period` must be ≥ 86400 seconds (24 hours)
+- For `lookback_days=7` (7 days), `refresh_period` must be ≥ 604800 seconds (7 days)
+
+Freqtrade will fail to start if this validation is not met.
+
+**Section sources**
+- [docker/Dockerfile.custom](file://docker/Dockerfile.custom#L1-L32)
+- [user_data/config.json](file://user_data/config.json#L1-L100)
 
 ## Security Best Practices
 

@@ -6,7 +6,7 @@
     "fiat_display_currency": "USD",
     "timeframe": "5m",
     "dry_run": true,
-    "dry_run_wallet": 1000,
+    "dry_run_wallet": 5000,
     "cancel_open_orders_on_exit": false,
     "unfilledtimeout": {
         "entry": 10,
@@ -54,7 +54,7 @@
             "number_assets": 80,
             "sort_key": "quoteVolume",
             "min_value_30m": 0,
-            "refresh_period": 1800,
+            "refresh_period": 86400,
             "lookback_days": 1
         },
         {"method": "AgeFilter", "min_days_listed": 10},
