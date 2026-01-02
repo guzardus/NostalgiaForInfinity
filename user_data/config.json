@@ -33,10 +33,13 @@
         "name": "binance",
         "key": "${EXCHANGE_KEY}",
         "secret": "${EXCHANGE_SECRET}",
-        "ccxt_config": {"enableRateLimit": true},
+        "ccxt_config": {
+            "enableRateLimit": true,
+            "rateLimit": 500
+        },
         "ccxt_async_config": {
             "enableRateLimit": true,
-            "rateLimit": 200
+            "rateLimit": 500
         },
         "pair_whitelist": [],
         "pair_blacklist": [
