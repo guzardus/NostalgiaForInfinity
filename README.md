@@ -7,6 +7,8 @@
 Full documentation is available online at:  
 👉 [https://iterativv.github.io/NostalgiaForInfinity/](https://iterativv.github.io/NostalgiaForInfinity/)
 
+**Deploying to Railway?** Check the [Railway deployment guide](https://iterativv.github.io/NostalgiaForInfinity/installation-and-setup/#deploying-to-railway) for Dockerfile path, port configuration, and validation requirements.
+
 ## Introduction
 
 Trading strategy for the [Freqtrade](https://www.freqtrade.io) crypto bot. For backtesting results, check out the comments in the individual [commit](https://github.com/iterativv/NostalgiaForInfinity/commits/main) page.
